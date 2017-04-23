@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"/>
+    
+    <link rel="stylesheet" href="css/themes/neutralish.css" />
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Rock+Salt|Walter+Turncoat" rel="stylesheet">  
+    
+    <script src="https://code.jquery.com/jquery-2.1.4.js" integrity="sha256-siFczlgw4jULnUICcdm9gjQPZkw/YPDqhQ9+nAOScE4=" crossorigin="anonymous"></script>
+	
+    
+   <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    
+    <link rel="stylesheet" href="css/themes/jquery.mobile.icons.min.css" />
+    
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" /> 
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script> 
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+      <script type="text/javascript" src="../plugins/cordova-plugin-camera/www/Camera.js"></script>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    
+    <link rel="stylesheet" href="jquery-ui.min.css">
+    <script src="external/jquery/jquery.js"></script>
+    <script src="jquery-ui.min.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    
+    <script src="js/libs/modernizr-1.7.min.js"></script>
+    <!-- Detects support for storage -->
+    
+    <title>ListQ</title>
+</head>
+
+<body>
+    <div data-role="page" id="listat" data-theme="b">
+        <div data-role="header">
+            <h1>ListQ</h1>
+        </div>
+        
+       <!-- <div data-role="navbar" id="navbar">
+            <ul>
+                <li><a href="#" data-icon="bullets" class="ui-btn-active">Your Lists</a></li>
+                <li><a href="customize.html" data-icon="gear" data-transition="flow">Customize</a></li>
+                <li><a href="cameratest3.html" data-icon="camera" data-transition="pop">Camera test3</a></li>
+                
+            </ul>
+        </div>-->
+        
+        <div role="main" class="ui-content">
+           
+	    <article id="lists" class="altura">
+            
+	    	<ul id="lista" contenteditable="true">
+                <p>1</p><li></li>
+		    </ul>
+            
+            <ul id="lista2" contenteditable="true">
+                <p>2</p><li></li>
+            </ul>
+            
+            <ul id="lista3" contenteditable="true">
+                <p>3</p><li></li>
+            </ul>
+            
+            <ul id="lista4" contenteditable="true">
+                <p>4</p><li></li>
+            </ul>
+            
+            </article>
+            
+           <div id="buttons"> 
+            <button onclick="createList()" id="newstorage" data-transition="flow" class="ui-btn ui-btn-inline ui-mini">Create a temporary list</button>
+		   
+		    <button id="btnclear" class="ui-btn ui-btn-inline ui-mini">Clear all lists</button>
+            
+            <p>Change the background image by taking a photo with your camera!</p>
+            
+            <button onclick="capturePhoto()" class="ui-btn ui-btn-inline ui-mini">Take photo for background image</button>
+            <img style="display:none;" id="largeImage" src="" height="0px" width="0px"/>
+	    </div>
+        </div>
+        
+        <div data-role="footer">
+            <h4>Create lists about anything!</h4>
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="cordova.js"></script>
+    
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.js"></script>
+    <script src="js/camera.js"></script>
+    <script>window.jQuery || document.write("<script src='js/libs/jquery-1.5.1.min.js'/>")</script>
+  
+    <script type="text/javascript">
+        
+        function createList(listname, listId) {
+            alert("This list will disappear when you close the app!");
+            this.listname = prompt("Enter list name");
+            this.listId = prompt("Enter id for list");
+            
+            var listname = this.listname;
+            var listId = this.listId;
+            
+            if (listname != null) {
+                
+                function makeList() {
+                var article = document.getElementById("lists");
+                var ul = document.createElement("ul");
+            
+                ul.appendChild(document.createTextNode(listname));
+                ul.setAttribute("id", listId);
+                ul.setAttribute("contenteditable","true");
+            
+                article.appendChild(ul);
+                var li = document.createElement("li");
+                
+                ul.appendChild(li);  
+                    
+            document.getElementById(listId).style.background = "#3d3d3d";
+            document.getElementById(listId).style.backgroundSize = "100%";
+            document.getElementById(listId).style.color = "white";
+            document.getElementById(listId).style.width = "50%";
+            document.getElementById(listId).style.border = "solid 1px white";
+            document.getElementById(listId).style.marginLeft = "20%";
+                }
+                
+            } else {
+            }
+            
+            console.log("listname = " + listname);
+            console.log("listId = " + listId);
+            return makeList();
+            
+           // console.log("myListname function= " + myListname);
+        }
+              
+      $(function() {
+          
+		if (Modernizr.localstorage) {
+            
+			$("#lista,#lista2,#lista3,#lista4").keypress(function() {
+			localStorage.setItem('name', $("#lista").html());
+            localStorage.setItem('name2', $("#lista2").html());
+            localStorage.setItem('name3', $("#lista3").html());
+            localStorage.setItem('name4', $("#lista4").html());
+			});
+            
+			if (localStorage.getItem('name')) {
+            $("#lista").html(localStorage.getItem('name'));
+            $("#lista2").html(localStorage.getItem('name2'));
+            $("#lista3").html(localStorage.getItem('name3'));
+            $("#lista4").html(localStorage.getItem('name4'));
+			}
+            
+            
+            $("#btnclear").click(function() {
+                var r = confirm("Do you really want to clear ALL lists?\n Temporary list will disappear!");
+                if (r == true) {
+                localStorage.clear();
+			     window.location = window.location;
+                    } else {
+                    }
+			  });
+            
+          $("btndelete").click(function() {
+               localStorage.removeItem("name2"); 
+            }); 
+		} 
+		else {
+			alert ("Your browser does not support the Storage Api :(");
+		}
+	  
+	});
+        
+    </script>
+    
+    <script src="js/prevent.js"></script>
+    
+</body>
+
+</html>
